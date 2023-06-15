@@ -51,7 +51,16 @@ namespace TabloidCLI.UserInterfaceManagers
                     Edit();
                     return this;
                 case "5":
-                    Remove();
+                    try
+                    {
+                        Remove();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        //Console.WriteLine("Hey! You can't delete that author!");
+                    }
+                    
                     return this;
                 case "0":
                     return _parentUI;
