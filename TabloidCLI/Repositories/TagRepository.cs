@@ -66,7 +66,19 @@ namespace TabloidCLI
 
         public void Update(Tag tag)
         {
-            throw new NotImplementedException();
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE Tag
+                                        SET Name = @name
+                                        WHERE id = @id";
+                    cmd.Parameters.AddWithValue("@name", tag.Name);
+                    cmd.Parameters.AddWithValue("@id", tag.Id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void Delete(int id)
@@ -77,7 +89,11 @@ namespace TabloidCLI
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM Tag WHERE Id = @id";
+<<<<<<< HEAD
                     cmdParameters.AddWithValue("@id", id);
+=======
+                    cmd.Parameters.AddWithValue("@id", id);
+>>>>>>> 8e2fe96c71f9cec04186434ed93298c9499e781f
                     cmd.ExecuteNonQuery();
                 }
             }

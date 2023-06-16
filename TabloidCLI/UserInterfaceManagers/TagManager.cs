@@ -74,9 +74,39 @@ namespace TabloidCLI.UserInterfaceManagers
 
         private void Edit()
         {
+<<<<<<< HEAD
             List<Tag> editTags = _tagRepository.GetAll();
             foreach (Tag t in editTags)
                 Console.WriteLine($"{}t.Id - {t.Name}");
+=======
+            Console.WriteLine("Tag to Edit");
+            List<Tag> editTags = _tagRepository.GetAll();
+            foreach (Tag t in editTags)
+            {
+                Console.WriteLine($"{t.Id} - {t.Name}");
+            }
+            Console.Write("Which tag would you like to edit? ");
+            string editTagId = Console.ReadLine();
+            if (editTagId == "")
+            {
+                return;
+            }
+            else 
+            {
+                Console.Write("Pick a new tag name: ");
+                string newTagName = Console.ReadLine();
+
+                Tag tagToEdit = new Tag
+                {
+                    Id = int.Parse(editTagId),
+                    Name = newTagName
+                };
+
+                _tagRepository.Update(tagToEdit);
+
+                Console.WriteLine("Your tag was edited!");
+            }
+>>>>>>> 8e2fe96c71f9cec04186434ed93298c9499e781f
         }
         Console.Write("Which tag would you like to edit?");
             string editTagId = Console.ReadLine();
@@ -103,6 +133,7 @@ namespace TabloidCLI.UserInterfaceManagers
 
         private void Remove()
         {
+<<<<<<< HEAD
             Console.WriteLine("Remove Tag")
             List<Tag> removeTags = __tagRepository.GetAll();   
             foreach (Tag t in removeTags)
@@ -121,6 +152,28 @@ namespace TabloidCLI.UserInterfaceManagers
             Console.WriteLine("Cannot remove tag.");
         }
     
+=======
+            Console.WriteLine("Remove Tag");
+            List<Tag> removeTags = _tagRepository.GetAll();
+            foreach (Tag rT in removeTags)
+            {
+                Console.WriteLine($"{rT.Id} - {rT.Name}");
+            }
+            Console.Write("Which tag would you like to remove? ");
+            int removeTagId = int.Parse(Console.ReadLine());
+            try
+            {
+
+                _tagRepository.Delete(removeTagId);
+
+                Console.WriteLine("Tag was successfully removed!");
+            }
+            catch
+            {
+                Console.WriteLine("Cannot remove tag.");
+            }
+
+>>>>>>> 8e2fe96c71f9cec04186434ed93298c9499e781f
         }
     }
 }
