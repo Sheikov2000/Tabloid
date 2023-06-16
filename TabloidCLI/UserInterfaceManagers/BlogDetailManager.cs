@@ -74,7 +74,10 @@ namespace TabloidCLI.UserInterfaceManagers
         }
         private void AddTag()
         {
-            throw new NotImplementedException();
+            Blog blog = _authorRepository.Get(_blogId);
+
+            Console.WriteLine($"What tag would like to add to {blog.Title}");
+
         }
         private void RemoveTag()
         {
