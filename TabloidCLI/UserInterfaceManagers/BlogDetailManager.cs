@@ -130,7 +130,12 @@ namespace TabloidCLI.UserInterfaceManagers
         }
         private void ViewPost()
         {
-            throw new NotImplementedException();
+            List<Post> posts = _postRepository.GetByBlog(_blogId);
+            foreach (Post post in posts)
+            {
+                Console.WriteLine($"{post.Title}");
+            }
+            Console.WriteLine();
         }
 
     }
