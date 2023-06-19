@@ -24,14 +24,15 @@ namespace TabloidCLI.UserInterfaceManagers
     {
         private IUserInterfaceManager _parentUI;
         private NoteRepository _noteRepository;
-        private int _noteId;
+        private int _postId;
     
 
-    public NoteManager(IUserInterfaceManager parentUI, string connectionString, int noteId)
+    public NoteManager(IUserInterfaceManager parentUI, string connectionString, int postId)
     {
         _parentUI = parentUI;
         _noteRepository = new NoteRepository(connectionString);
-        _noteId = noteId;
+       
+        _postId = postId;
     }
 
         public IUserInterfaceManager Execute()
@@ -47,6 +48,7 @@ namespace TabloidCLI.UserInterfaceManagers
             switch (choice)
             {
                 case "1":
+                    
                     return this;
                 case "2":
                     return this;
