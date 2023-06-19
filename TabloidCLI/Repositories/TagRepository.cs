@@ -165,6 +165,8 @@ namespace TabloidCLI
                             Url = reader.GetString(reader.GetOrdinal("Url"))
                         };
                         results.Add(blog);
+                       
+
                     }
 
                     reader.Close();
